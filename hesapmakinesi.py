@@ -1,41 +1,39 @@
-print("""********************************
-Yapmak İstediğiniz işlemi seçiniz:
+print("Hesap Makinesi\n")
 
-1. Toplama İşlemi
-2. Çıkarma İşlemi
-3. Çarpma İşlemi
-4. Bölme İşlemi
-****************************************
-""")
+sayi1 = float(input("İlk sayıyı giriniz: "))
+sonuc = sayi1
+
 while True:
-    islem = input("İşlem Seçiniz (Çıkış için 'b' ya basalım): ")
-    if islem == 'b':
-        print("Çıkılıyor...")
-        quit()
-    elif islem == "1":
-        print("------Toplama İşlemi------")
-        sayi1 = int(input("1.Sayıyı Giriniz: "))
-        sayi2 = int(input("2.Sayıyı Giriniz: "))
-        print("{}  +   {}    =  {}".format(sayi1, sayi2, sayi1+sayi2))
-    elif islem == "2":
-        print("------Çıkarma İşlemi------")
-        sayi1 = float(input("1.Sayıyı Giriniz: "))
-        sayi2 = float(input("2.Sayıyı Giriniz: "))
-        print("{}  -   {}    =  {}".format(sayi1, sayi2, sayi1-sayi2))
-    elif islem == "3":
-        print("------Çarpma İşlemi------")
-        sayi1 = float(input("1.Sayıyı Giriniz: "))
-        sayi2 = float(input("2.Sayıyı Giriniz: "))
-        print("{}  x   {}    =  {}".format(sayi1, sayi2, sayi1*sayi2))
-    elif islem == "4":
-        print("------Bölme İşlemi------")
-        try:
-            sayi1 = int(input("1.Sayıyı Giriniz: "))
-            sayi2 = int(input("2.Sayıyı Giriniz: "))
-            print("{}  /   {}    =  {:.2f}".format(sayi1, sayi2, sayi1/sayi2))
-        except ZeroDivisionError:
-            print("Bir sayıyı 0'a bölemezsiniz!")
-        except ValueError:
-            print("Lütfen sadece sayı girin!")
+    print("\nYapmak istediğiniz işlemi seçiniz:")
+    print("1. Toplama (+)")
+    print("2. Çıkarma (-)")
+    print("3. Çarpma (*)")
+    print("4. Bölme (/)")
+    print("5. Çıkış")
+
+    secim = input("Seçiminizi yapınız (1/2/3/4/5): ")
+
+    if secim == '5':
+        print("👉 Hesaplama sona erdi. Sonuç:", sonuc)
+        break
+
+    sayi2 = float(input("Sonraki sayıyı giriniz: "))
+
+    if secim == '1':
+        sonuc += sayi2
+    elif secim == '2':
+        sonuc -= sayi2
+    elif secim == '3':
+        sonuc *= sayi2
+    elif secim == '4':
+        if sayi2 != 0:
+            sonuc /= sayi2
+        else:
+            print("❌ Sıfıra bölünemez!")
+            continue
     else:
-        print("Geçersiz Seçenek...")
+        print("❌ Geçersiz işlem seçimi!")
+        continue
+
+    print("✅ Güncel Sonuç:", sonuc)
+
